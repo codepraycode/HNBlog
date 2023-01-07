@@ -1,5 +1,5 @@
-Django 
-django 
+Django
 django-cors-headers 
-django 
-django-cors-headers 
+django-environ 
+djangorestframework 
+requests 
