@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #Dependencies
-    'django_vite',
+    # 'django_vite',
     # Created apps
     'api.apps.ApiConfig',
 ]
