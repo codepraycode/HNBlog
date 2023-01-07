@@ -1,9 +1,22 @@
-@echo off
+@ECHO off
 :: This script is intended to install a python package and update requirements.txt
 :: package name must be passed as first argument
 
-echo installing %1...
+ECHO installing %*...
+pip install %*
 
-pip install %1
+IF  %ERRORLEVEL% EQU 1 GOTO ERROR
+ECHO Updateing requirements.txt...
 
-if %ERRORLEVEL% EQU 0 echo Updateing requirements.txt && echo %1 >> requirements.txt
+FOR %%e IN (%*) DO (
+    ECHO %%e >> requirements.txt
+)
+ECHO Added package(s)
+GOTO EOF
+
+:ERROR
+ECHO Could not add package(s)
+::CMD /k
+EXIT /b 1
+
+:EOF
