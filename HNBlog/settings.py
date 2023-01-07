@@ -123,9 +123,10 @@ VITE_APP_DIR = BASE_DIR / "client"
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-# STATICFILES_DIRS = [
-#     VITE_APP_DIR / "dist",
-# ]
+STATICFILES_DIRS = [
+    # VITE_APP_DIR / "dist",
+    os.path.join(BASE_DIR, 'static'),
+]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Default primary key field type
