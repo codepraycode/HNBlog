@@ -4,11 +4,11 @@ from django.db import models
 
 class UserAccountManager(BaseUserManager):
     
-    def validate_user_data(self, **user_data):
+    def validate_user_data(self, **data):
         """
             Receives user data, validates it and returns the data
             
-            user_data includes:
+            data includes:
             - username
             - email
             - password
@@ -26,7 +26,7 @@ class UserAccountManager(BaseUserManager):
         if password is None:
             raise TypeError('password is required')
         
-        return user_data
+        return data
     
     def create_user(self, **data):#username, email, password
         
@@ -50,9 +50,12 @@ class UserAccountManager(BaseUserManager):
         user = self.model(
             username = user_data['username'],
             email = self.normalize_email(user_data['email']),
-            is_superuser = True,
-            is_staff = True,
         )
+        
+        user.set_password(user_data['password'])
+        user.is_active = True,
+        user.is_superuser = True,
+        user.is_staff = True,
 
         user.save()
         return user

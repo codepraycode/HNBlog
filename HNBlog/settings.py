@@ -60,8 +60,8 @@ ROOT_URLCONF = 'HNBlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'client')],
-        'APP_DIRS': False,
+        'DIRS': [], # [os.path.join(BASE_DIR, 'client')],
+        'APP_DIRS': True, # False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
