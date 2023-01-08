@@ -17,7 +17,17 @@ This webapp is consumes [https://hackernews.api-docs.io.](https://hackernews.api
 > News created by user is and will not have anything to do with Hacker News. This also include users created on this platform, it doesn't mean the User is also created on the HackerNews platform, this app just make news consumption easier.
 
 # Contribution
-This is open-source and contributions are welcome. The codes are written to be easily understood as much as possible, but if assistance is needed to understand the architecture of the app, do well to [email me](#author).
+This is open-source and contributions are welcome. 
+
+To get started with contributing, you should:
+
+- clone this repo
+- run `run_setup.bat` in project directory to setup the app for developement
+- run frontend and backend server on different consoles to use.
+
+> To commit your code to github, you can use the `commit` command with *your message in quotes* in front of it to commit and push to github.
+
+The codes are written to be easily understood as much as possible, but if assistance is needed to understand the architecture of the app, do well to [email me](#author).
 
 # Author
 I'm codepraycode, and here are my contacts:
