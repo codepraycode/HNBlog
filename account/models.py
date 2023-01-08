@@ -1,6 +1,8 @@
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, PermissionsMixin)
 from django.db import models
+import binascii
+import os
 
 class UserAccountManager(BaseUserManager):
     
@@ -59,6 +61,32 @@ class UserAccountManager(BaseUserManager):
 
         user.save()
         return user
+    
+    def authenticate(self, **data):
+
+        username = data.get('username', None)
+        password = data.get('password', None)
+
+        if username is None:
+            raise TypeError('username is required')
+
+        if password is None:
+            raise TypeError('password is required')
+
+        try:            
+            user = self.model.objects.get(
+                username = username
+            )
+        except self.model.DoesNotExist:
+            return None
+
+        valid_password = user.check_password(password)
+        
+
+        if not valid_password:
+            return None
+
+        return user
 
 # Create your models here.
 class UserAccount(AbstractBaseUser, PermissionsMixin):
@@ -106,4 +134,45 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
         db_table = "accounts_tb"
         verbose_name = "User account"
         verbose_name_plural = "Users account"
-        
+
+
+
+# For authentication
+
+class UserAccountAuthToken(models.Model):
+    """
+    The default authorization token for UserAccount model.
+    """
+    key = models.CharField(
+        _("Key"),
+        max_length = 40, 
+        primary_key = True
+    ) # authentication token
+
+    association = models.OneToOneField(
+        UserAccount, 
+        related_name = 'auth_token',
+        on_delete = models.CASCADE, 
+        verbose_name = _("User account")
+    )
+    created = models.DateTimeField(
+        _("Created"),
+        auto_now_add = True
+    )
+
+    class Meta:
+        # abstract = 'api.authentication' not in settings.INSTALLED_APPS
+        verbose_name = _("Token")
+        verbose_name_plural = _("Tokens")
+
+    def save(self, *args, **kwargs):
+        if not self.key:
+            self.key = self.generate_key()
+        return super().save(*args, **kwargs)
+
+    @classmethod
+    def generate_key(cls):
+        return binascii.hexlify(os.urandom(20)).decode()
+
+    def __str__(self):
+        return self.key

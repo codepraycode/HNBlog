@@ -6,8 +6,10 @@ from .views import (
     GetUserAccountView,
 )
 
+from .authentication import TokenAuthentication
 
 urlpatterns = [
     path('', GetUserAccountView.as_view(), name="account:get")
     path('create/', CreateUserAccountView.as_view(), name="account:create")
+    path('signin/', TokenAuthentication.as_view(), name="account:signin")
 ]

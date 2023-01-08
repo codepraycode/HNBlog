@@ -34,4 +34,3 @@ class RetrieveUserAccountView(CreateAPIView):
         serialize = UserSerializer(instance=request.user)
 
         return Response(data=serialize.data)
-    
