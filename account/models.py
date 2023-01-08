@@ -1,6 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, PermissionsMixin)
-
+from django.db import models
 
 class UserAccountManager(BaseUserManager):
     
@@ -49,9 +49,9 @@ class UserAccountManager(BaseUserManager):
         
         user = self.model(
             username = user_data['username'],
-            email = self.normalize_email(user_data['email'])
-            is_superuser = True
-            is_staff = True
+            email = self.normalize_email(user_data['email']),
+            is_superuser = True,
+            is_staff = True,
         )
 
         user.save()
