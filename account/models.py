@@ -1,12 +1,64 @@
-from helpers.models import BaseModel
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager, PermissionsMixin)
 
 
-class UserAccountManager():
-    pass
+class UserAccountManager(BaseUserManager):
+    
+    def validate_user_data(self, **user_data):
+        """
+            Receives user data, validates it and returns the data
+            
+            user_data includes:
+            - username
+            - email
+            - password
+            
+            and they are all required.
+        """
+        username = data.get('username',None)
+        email = data.get('email',None)
+        password = data.get('password',None)
+        
+        if username is None:
+            raise TypeError('username is required')
+        if email is None:
+            raise TypeError('email is required')
+        if password is None:
+            raise TypeError('password is required')
+        
+        return user_data
+    
+    def create_user(self, **data):#username, email, password
+        
+        user_data = self.validate_user_data(**data)
+        
+        user = self.model(
+            username = user_data['username'],
+            email = self.normalize_email(user_data['email'])
+        )
+
+        user.set_password(user_data['password'])
+        user.is_active = True
+        
+        user.save()
+        return user
+    
+    def create_superuser(self, **data):#username, email, password
+        
+        user_data = self.validate_user_data(**data)
+        
+        user = self.model(
+            username = user_data['username'],
+            email = self.normalize_email(user_data['email'])
+            is_superuser = True
+            is_staff = True
+        )
+
+        user.save()
+        return user
 
 # Create your models here.
-class UserAccount(BaseModel):
+class UserAccount(AbstractBaseUser, PermissionsMixin):
     """
         User Model
     """
@@ -30,7 +82,7 @@ class UserAccount(BaseModel):
     
     # Meta data
     is_verified = models.BooleanField(default = True) # in case of email verification
-    is_active = models.BooleanField(default = True) # if allowed to operate in app
+    is_active = models.BooleanField(default = False) # if allowed to operate in app
     is_staff = models.BooleanField(default = False) # if app admin user
     date_joined = models.DateTimeField(auto_now_add=True,editable=True) # date account was created
     last_login = models.DateTimeField(_('last login'), blank=True, null=True) # last time account authenticated
