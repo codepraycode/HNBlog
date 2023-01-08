@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # 'django_vite',
     # Created apps
     'api.apps.ApiConfig',
+    'account.apps.AccountConfig',
 ]
 
 MIDDLEWARE = [
