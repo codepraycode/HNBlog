@@ -1,5 +1,4 @@
 from rest_framework.views import exception_handler
-from rest_framework.exceptions import ParseError
 from django.utils.translation import gettext_lazy as _
 
 def custom_exception_handler(exc, context):
@@ -26,8 +25,3 @@ def custom_exception_handler(exc, context):
         response.data['status_code'] = response.status_code
     
     return response
-
-
-def HNError(ParseError):
-    default_detail = _('Bad request')
-    default_code = 'bad_request'
