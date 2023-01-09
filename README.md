@@ -31,9 +31,9 @@ To get started with contributing, you should:
 
 API collection is available in [Postman](https://app.getpostman.com/run-collection/16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca?action=collection%2Ffork&collection-url=entityId%3D16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca%26entityType%3Dcollection%26workspaceId%3D0d42a23f-2175-4e1e-95f3-0ceef346f71c)
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca?action=collection%2Ffork&collection-url=entityId%3D16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca%26entityType%3Dcollection%26workspaceId%3D0d42a23f-2175-4e1e-95f3-0ceef346f71c)
+[![Run collection in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca?action=collection%2Ffork&collection-url=entityId%3D16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca%26entityType%3Dcollection%26workspaceId%3D0d42a23f-2175-4e1e-95f3-0ceef346f71c)
 
-The codes are written to be easily understood as much as possible, but if assistance is needed to understand the architecture of the app, do well to [email me](preciousolusola16@gmail.com).
+The codes are written to be easily understood as much as possible, you can also checkout the app's [API documentation on postman](https://www.postman.com/cloudy-crescent-375263/workspace/0d42a23f-2175-4e1e-95f3-0ceef346f71c/documentation/16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca) but if assistance is needed to understand the architecture of the app, do well to [email me](preciousolusola16@gmail.com), Thank you, God bless you.
 
 # Author
 I'm codepraycode, and here are my contacts:
