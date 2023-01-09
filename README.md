@@ -23,11 +23,17 @@ To get started with contributing, you should:
 
 - clone this repo
 - run `run_setup.bat` in project directory to setup the app for developement
-- run frontend and backend server on different consoles to use.
+- run frontend and backend server on different consoles.
+
 
 > To commit your code to github, you can use the `commit` command with *your message in quotes* in front of it to commit and push to github.
 
-The codes are written to be easily understood as much as possible, but if assistance is needed to understand the architecture of the app, do well to [email me](#author).
+
+API collection is available in [Postman](https://app.getpostman.com/run-collection/16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca?action=collection%2Ffork&collection-url=entityId%3D16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca%26entityType%3Dcollection%26workspaceId%3D0d42a23f-2175-4e1e-95f3-0ceef346f71c)
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca?action=collection%2Ffork&collection-url=entityId%3D16739918-10506dcf-da24-4fec-9d0b-fe39f9b9c0ca%26entityType%3Dcollection%26workspaceId%3D0d42a23f-2175-4e1e-95f3-0ceef346f71c)
+
+The codes are written to be easily understood as much as possible, but if assistance is needed to understand the architecture of the app, do well to [email me](preciousolusola16@gmail.com).
 
 # Author
 I'm codepraycode, and here are my contacts:
