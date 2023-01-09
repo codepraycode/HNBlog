@@ -21,3 +21,5 @@ urlpatterns = [
     path('api/account/', include('account.urls')),
     # Add other routes here
 ]
+
+handler500 = 'rest_framework.exceptions.server_error'
