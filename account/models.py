@@ -76,13 +76,13 @@ class UserAccountManager(BaseUserManager):
                 username = username
             )
         except self.model.DoesNotExist:
-            return None
-
-        valid_password = user.check_password(password)
+            raise TypeError('Invalid username or password.')
         
+        valid_password = user.check_password(password)
+        print(password, valid_password)
 
         if not valid_password:
-            return None
+            raise TypeError('Invalid username or password.')
 
         return user
 

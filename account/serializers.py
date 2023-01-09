@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer, BooleanField
+from rest_framework.serializers import ModelSerializer, BooleanField, CharField
 from .models import UserAccount
 
 class UserAccountSerializer(ModelSerializer):
@@ -9,7 +9,7 @@ class UserAccountSerializer(ModelSerializer):
     # validations and constraints already taken cared of by model
     
     is_verified = BooleanField(read_only=True)
-    
+    password = CharField(write_only = True)
     class Meta:
         model = UserAccount
         fields = (
@@ -17,4 +17,10 @@ class UserAccountSerializer(ModelSerializer):
             'username',
             'email',
             'is_verified',
+            'password',
         )
+        
+    def create(self, validated_data):
+        # return super().create(validated_data)
+        
+        return self.Meta.model.objects.create_user(**validated_data)

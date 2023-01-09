@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from ..models import UserAccount
 
 class UserAccountAuthSerialzier(serializers.Serializer):
-    username = serializers.EmailField(
+    username = serializers.CharField(
         label=_("Username"),
     )
     password = serializers.CharField(
@@ -23,15 +23,17 @@ class UserAccountAuthSerialzier(serializers.Serializer):
         password = attrs.get('password')
 
         if username and password:
-
-            user = UserAccount.objects.authenticate(
-                username = username, 
-                password = password
-            )
             
-            if not user:
-                msg = _('Invalid username or password.')
-                raise serializers.ValidationError(msg, code='authorization')
+            try:
+
+                user = UserAccount.objects.authenticate(
+                    username = username,
+                    password = password
+                )
+            
+            except Exception as err:
+                # msg = _('Invalid username or password.')
+                raise serializers.ValidationError(err, code='authorization')
         else:
             msg = _("username and password is required.")
             raise serializers.ValidationError(msg, code='authorization')
