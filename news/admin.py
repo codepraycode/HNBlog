@@ -32,6 +32,7 @@ class StoryItemAdmin(admin.ModelAdmin, BaseItemAdmin):
         }),
         (_("Meta"), {
             "fields": (
+                'hnId',
                 'deleted',
                 'dead',
                 '_type',

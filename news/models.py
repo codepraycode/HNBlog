@@ -5,6 +5,10 @@ from django.utils.translation import gettext_lazy as _
 # Create your models here.
 class StoryItemModel(models.Model):
     
+    hnId = models.PositiveIntegerField(
+        _("HackerNews Id"),
+        blank=True, null=True
+    )
     by = models.CharField(
         _("Author"),
         max_length=100, blank=True, null=True
