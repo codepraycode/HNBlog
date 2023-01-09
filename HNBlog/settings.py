@@ -113,7 +113,8 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         'account.auth.utils.TokenAuthentication',
     ),
-    "EXCEPTION_HANDLER": "helpers.exceptions.custom_exception_handler"
+    "EXCEPTION_HANDLER": "helpers.exceptions.custom_exception_handler",
+    "NON_FIELD_ERRORS_KEY": "message",
 }
 
 

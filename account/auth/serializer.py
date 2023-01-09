@@ -31,8 +31,7 @@ class UserAccountAuthSerialzier(serializers.Serializer):
                     password = password
                 )
             
-            except Exception as err:
-                # msg = _('Invalid username or password.')
+            except LookupError or KeyError as err: # user not found in database
                 raise serializers.ValidationError(err, code='authorization')
         else:
             msg = _("username and password is required.")
