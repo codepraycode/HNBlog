@@ -112,7 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         'account.auth.utils.TokenAuthentication',
-    )
+    ),
+    "EXCEPTION_HANDLER": "helpers.exceptions.custom_exception_handler"
 }
 
 
