@@ -63,6 +63,6 @@ class AuthenticateUserAccountView(APIView):
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['association']
-        token, created = UserAccountAuthTokenModel.objects.get_or_create(association=association)
+        user = serializer.validated_data['user']
+        token, created = UserAccountAuthTokenModel.objects.get_or_create(association=user)
         return Response({'token': token.key})

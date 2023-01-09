@@ -79,7 +79,6 @@ class UserAccountManager(BaseUserManager):
             raise TypeError('Invalid username or password.')
         
         valid_password = user.check_password(password)
-        print(password, valid_password)
 
         if not valid_password:
             raise TypeError('Invalid username or password.')

@@ -14,7 +14,7 @@ class UserAccountAuthToken(models.Model):
         primary_key = True
     ) # authentication token
 
-    association = models.OneToOneField(
+    association = models.OneToOneField( # user account that this token is associated to
         UserAccount, 
         related_name = 'auth_token',
         on_delete = models.CASCADE, 
