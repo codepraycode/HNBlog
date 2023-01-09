@@ -38,11 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #Dependencies
-    'rest_framework',
     # Created apps
     'api.apps.ApiConfig',
     'account.apps.AccountConfig',
+    #Dependencies
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -111,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # REST FRAMEWORK settings
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        'account.authentication.TokenAuthentication',
+        'account.auth.utils.TokenAuthentication',
     )
 }
 

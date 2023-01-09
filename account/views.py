@@ -6,7 +6,9 @@ from rest_framework.permissions import IsAuthenticated
 from .models import UserAccount
 
 # Serializers
-from .serializers import UserSerializer
+from .serializers import (
+    UserAccountSerializer as UserSerializer
+)
 
 # Create your views here.
 class CreateUserAccountView(CreateAPIView):
