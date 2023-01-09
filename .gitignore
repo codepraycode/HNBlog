@@ -13,6 +13,8 @@ node_modules
 dist
 dist-ssr
 *.local
+*-lock.json
+*.lock
 
 # Editor directories and files
 .vscode/*

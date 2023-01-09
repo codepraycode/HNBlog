@@ -2,4 +2,4 @@ Django
 django-cors-headers 
 django-environ 
 djangorestframework 
-requests 
+requests
