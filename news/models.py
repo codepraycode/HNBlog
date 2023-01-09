@@ -1,5 +1,5 @@
 from django.db import models
-from helpers.model import ItemBaseModel
+# from helpers.model import ItemBaseModel
 from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
@@ -55,7 +55,7 @@ class StoryItemModel(models.Model):
         null = True
     )
     
-    author = property(lambda self, obj: obj.by or "Annonymous")
+    author = property(lambda self: self.by or "Annonymous")
 
     
     def __str__(self):

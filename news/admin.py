@@ -11,11 +11,12 @@ class StoryItemAdmin(admin.ModelAdmin, BaseItemAdmin):
     
     
     list_display = (
-        'author',
-        'item_type',
+        # 'item_type',
         'title',
+        'url',
+        'author',
         'comments',
-        'score',
+        # 'score',
     )
 
     search_fields = (
