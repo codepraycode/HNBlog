@@ -5,7 +5,7 @@ from django.utils.translation import gettext_lazy as _
     This file holds base models for all apps in project
 """
 
-class AbstractItemBaseModel():
+class AbstractItemBaseModel(models.Model):
     """
         This is the Base model for all items
     """

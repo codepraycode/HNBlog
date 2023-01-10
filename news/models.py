@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ItemBaseModel(AbstractItemBaseModel):
+    pass
 
     class Meta:
         db_table = "items_tb"
