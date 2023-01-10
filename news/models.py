@@ -1,71 +1,57 @@
 from django.db import models
-# from helpers.model import ItemBaseModel
+from helpers.model import AbstractItemBaseModel
 from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
-class StoryItemModel(models.Model):
-    
-    hnId = models.PositiveIntegerField(
-        _("HackerNews Id"),
-        blank=True, null=True
-    )
-    by = models.CharField(
-        _("Author"),
-        max_length=100, blank=True, null=True
-    )
-    deleted = models.BooleanField(
-        _("Deleted"),
-        default=False, null=True)
-    dead = models.BooleanField(
-        _("Dead"),
-        default=False, null=True)
 
-    time = models.DateTimeField(blank=True, null=True)
-    kids = models.TextField(  # stores an array of integers as string
-        _("Kids"),
-        blank=True,
-        null=True
 
-        # converting snippet: list(map(int, arrr.strip('][').split(',')))
-    )
-    _type = models.CharField(
-        _("Type"),
-        max_length=10,
-        blank=False,
-        null=False,
-        default = "story"
-    )
-    
-    title = models.CharField(
-        _("Title"),
-        max_length = 225,
-        blank = True,
-        null = True
-    )
-    url = models.URLField(
-        _("Url"),
-        blank = True,
-        null = True
-    )
-    descendants = models.PositiveIntegerField(
-        _("Descendants"),
-        blank = True,
-        null = True
-    )
-    
-    score = models.PositiveIntegerField(
-        _("Score"),
-        blank = True,
-        null = True
-    )
-    
-    author = property(lambda self: self.by or "Annonymous")
+class ItemBaseModel(AbstractItemBaseModel):
 
-    
-    def __str__(self):
-        return f"{self.title} - {self.author}"
+    class Meta:
+        db_table = "items_tb"
+
+class StoryItemManager(models.Manager):
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(type = ItemBaseModel.Types.STORY)
+class StoryItemModel(ItemBaseModel):
     
     class Meta:
-        # db_table = "accounts_tb"
+        proxy = True
         verbose_name = "Story"
         verbose_name_plural = "Stories"
+    
+    objects = StoryItemManager()
+    
+    def save(self, *args, **kwargs):
+        self.type = ItemBaseModel.Types.STORY
+        
+        return super().save(self, *args, **kwargs)
+    
+    def __str__(self):
+        return f"stroy: {self.title} - {self.author}"
+
+
+
+class CommentItemManager(models.Manager):
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.filter(type = ItemBaseModel.Types.COMMENT)
+
+
+class CommentItemModel(ItemBaseModel):
+    
+    objects = CommentItemManager()
+    
+    def save(self, *args, **kwargs):
+        self.type = ItemBaseModel.Types.COMMENT
+
+        return super().save(self, *args, **kwargs)
+
+    def __str__(self):
+        return f"comment: {self.text[:20]}{(len(self.text) > 20 ) and '...'}"
+
+    class Meta(ItemBaseModel.Meta):
+        proxy = True
+        verbose_name = "Comment"
+        verbose_name_plural = "Comments"
