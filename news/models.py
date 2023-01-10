@@ -6,7 +6,11 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ItemBaseModel(AbstractItemBaseModel):
-    pass
+    
+    # def save(self, *args, **kwargs):
+    #     if hasattr(self, 'kids'):
+    #         self.kids = str(self.kids)
+    #     return super().save(*args, **kwargs)
 
     class Meta:
         db_table = "items_tb"
@@ -27,7 +31,7 @@ class StoryItemModel(ItemBaseModel):
     def save(self, *args, **kwargs):
         self.type = ItemBaseModel.Types.STORY
         
-        return super().save(self, *args, **kwargs)
+        return super().save(*args, **kwargs)
     
     def __str__(self):
         return f"stroy: {self.title} - {self.author}"

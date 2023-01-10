@@ -2,7 +2,8 @@ from rest_framework.serializers import (
     ModelSerializer, 
     SerializerMethodField,
     IntegerField,
-    ListField
+    ListField,
+    ValidationError
 )
 from .models import ItemBaseModel, StoryItemModel, CommentItemModel
 
@@ -20,21 +21,27 @@ class ItemSerializer(ModelSerializer):
             'id',
             'type',
             'by',
-            'deleted',
-            'dead',
+            # 'deleted',
+            # 'dead',
             'time',
             'kids',
         )
     
     def get_id(self, obj):
-        if obj.hnId:
-            return obj.hnId
+        if(not hasattr(obj, 'get')):
+            print(obj)
+            return ''
+        hnid = obj.get('hnId')
         
-        return obj.id
+        if hnid:
+            return hnid
+        
+        return obj.get('id')
 
     def save(self, **kwargs):
-        print(self.validated_data)
-        # return super().save(**kwargs)
+        # print("Data----", kwargs)
+        # print(self.validated_data)
+        return super().save(**kwargs)
 
 class StoryItemSerializer(ItemSerializer):
 
