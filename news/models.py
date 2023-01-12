@@ -6,11 +6,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ItemBaseModel(AbstractItemBaseModel):
-    
-    # def save(self, *args, **kwargs):
-    #     if hasattr(self, 'kids'):
-    #         self.kids = str(self.kids)
-    #     return super().save(*args, **kwargs)
 
     class Meta:
         db_table = "items_tb"
