@@ -14,6 +14,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='itembasemodel',
             name='time',
-            field=helpers.model.UCDateTimeField(blank=True, null=True),
+            field=helpers.model.DateTimeField(blank=True, null=True),
         ),
     ]
