@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Created apps
-    'api.apps.ApiConfig',
     'account.apps.AccountConfig',
+    'news.apps.NewsConfig',
     #Dependencies
     'rest_framework',
 ]

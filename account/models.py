@@ -37,7 +37,7 @@ class UserAccountManager(BaseUserManager):
         if password is None:
             raise KeyError('password is required')
         
-        return {username, email, password}
+        return {"username": username, "email": email, "password":password}
     
     def authenticate(self, **data):
         
@@ -100,9 +100,9 @@ class UserAccountManager(BaseUserManager):
         )
 
         user.set_password(user_data['password'])
-        user.is_active = True,
-        user.is_superuser = True,
-        user.is_staff = True,
+        user.is_active = True
+        user.is_superuser = True
+        user.is_staff = True
 
         user.save()
         return user
